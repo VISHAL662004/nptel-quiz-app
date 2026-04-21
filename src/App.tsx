@@ -40,6 +40,7 @@ function App() {
         <div>
           <p className="hero-kicker">Interactive Quiz Platform</p>
           <h1>NPTEL Multi-Year Practice Arena</h1>
+          <p className="hero-credit">Made by Vishal Kumar</p>
         </div>
         <p className="hero-sub">
           Year-wise, week-wise, and full syllabus drills with instant review and

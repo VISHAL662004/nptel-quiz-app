@@ -92,6 +92,12 @@ select {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
+.hero-credit {
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .hero-sub {
   color: var(--muted);
   max-width: 420px;
