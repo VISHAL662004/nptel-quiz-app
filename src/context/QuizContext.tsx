@@ -34,7 +34,11 @@ interface QuizContextValue {
   session: QuizSession
   currentQuestion: Question | null
   progress: number
-  startQuiz: (mode: QuizMode, source?: 'default' | 'custom') => void
+  startQuiz: (
+    mode: QuizMode,
+    source?: 'default' | 'custom',
+    customVariant?: 'weeks' | 'random15',
+  ) => void
   answerQuestion: (questionId: string, option: string) => void
   setIndex: (index: number) => void
   nextQuestion: () => void
@@ -162,7 +166,11 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const startQuiz = useCallback(
-    (mode: QuizMode, source: 'default' | 'custom' = 'default') => {
+    (
+      mode: QuizMode,
+      source: 'default' | 'custom' = 'default',
+      customVariant: 'weeks' | 'random15' = 'weeks',
+    ) => {
       if (!dataset) {
         return
       }
@@ -174,11 +182,19 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
         source === 'custom',
         customQuizOrder,
       )
+      const finalPool =
+        source === 'custom' && customVariant === 'random15'
+          ? getPool(
+              dataset,
+              { ...selection, shuffle: 'random15', scope: 'full' },
+              bookmarks,
+            )
+          : pool
       setSession({
         ...defaultSession,
         started: true,
         mode,
-        questions: pool,
+        questions: finalPool,
         startedAt: Date.now(),
       })
     },
