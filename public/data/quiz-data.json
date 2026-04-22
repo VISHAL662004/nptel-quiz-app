@@ -40,10 +40,6 @@
               "options": [
                 {
                   "key": "a",
-                  "text": "___________ allows us to use our smartphones to lock and unlock our door remotely at our homes or our businesses."
-                },
-                {
-                  "key": "a",
                   "text": "Smart Meter"
                 },
                 {
@@ -123,10 +119,6 @@
               "id": "2024-W1-Q5",
               "prompt": "A Passive Infrared Ray (PIR) sensor is used for ____________?",
               "options": [
-                {
-                  "key": "a",
-                  "text": "Passive Infrared Ray (PIR) sensor is used for ____________?"
-                },
                 {
                   "key": "a",
                   "text": "Humidity Detection"
@@ -210,10 +202,6 @@
               "options": [
                 {
                   "key": "a",
-                  "text": "random deviation of the signal that varies in time is called ____________."
-                },
-                {
-                  "key": "a",
                   "text": "Noise"
                 },
                 {
@@ -239,10 +227,6 @@
               "id": "2024-W1-Q9",
               "prompt": "A Relay Switch is an example of _____________.",
               "options": [
-                {
-                  "key": "a",
-                  "text": "Relay Switch is an example of _____________."
-                },
                 {
                   "key": "a",
                   "text": "A Sensor"
@@ -1343,14 +1327,6 @@
               "options": [
                 {
                   "key": "a",
-                  "text": "mobile entity that collects the data from sensor nodes goes to the sink, and delivers the"
-                },
-                {
-                  "key": "c",
-                  "text": "ollected data from different sensor nodes are called?"
-                },
-                {
-                  "key": "a",
                   "text": "Data Molecule"
                 },
                 {
@@ -1367,7 +1343,7 @@
                 }
               ],
               "correctAnswer": "c",
-              "correctText": "ollected data from different sensor nodes are called?",
+              "correctText": "Data Mules",
               "solution": "A mobile entity that collects the data from sensor nodes goes to the sink,\nand delivers the collected data from different sensor nodes are called Data Mules.\nSee lecture 18 (Sensor Networks-V) @ 07:11\n\n-- 21 of 82 --\n\nNPTEL Online Certification Courses\nIndian Institute of Technology Kharagpur",
               "year": "2024",
               "week": 4
@@ -3439,20 +3415,8 @@
             },
             {
               "id": "2024-W9-Q11",
-              "prompt": "Data from an IoT device is transferred to cloud via a network, which is then processed at the cloud and then",
+              "prompt": "Data from an IoT device is transferred to cloud via a network, which is then processed at the cloud and then a response is sent back to the IoT device from the cloud after processing. The time it takes for one-way data transfer between the node and cloud is 10s and the data processing time at the cloud is ‘x’ seconds. It takes a total of 25s for the entire to and fro transfer of data between the sensor and cloud along with processing at the cloud. What is the value of x?",
               "options": [
-                {
-                  "key": "a",
-                  "text": "response is sent back to the IoT device from the cloud after processing. The time it takes for one-way data transfer between the node and cloud is 10s and the data processing time at the cloud is ‘x’ seconds. It takes"
-                },
-                {
-                  "key": "a",
-                  "text": "total of 25s for the entire to and fro transfer of data between the sensor and cloud along with processing"
-                },
-                {
-                  "key": "a",
-                  "text": "t the cloud. What is the value of x?"
-                },
                 {
                   "key": "a",
                   "text": "10s"
@@ -3585,10 +3549,6 @@
               "id": "2024-W10-Q1",
               "prompt": "A smart city _____________.",
               "options": [
-                {
-                  "key": "a",
-                  "text": "smart city _____________."
-                },
                 {
                   "key": "a",
                   "text": "Is an urban system"
@@ -5008,10 +4968,6 @@
               "options": [
                 {
                   "key": "a",
-                  "text": "sensor is -"
-                },
-                {
-                  "key": "a",
                   "text": "Only sensitive to the measured property"
                 },
                 {
@@ -5275,12 +5231,8 @@
             },
             {
               "id": "2025-W2-Q6",
-              "prompt": "State True or False.",
+              "prompt": "State True or False. - topic in MQTT can only be numbers.",
               "options": [
-                {
-                  "key": "a",
-                  "text": "topic in MQTT can only be numbers."
-                },
                 {
                   "key": "a",
                   "text": "False"
@@ -10255,12 +10207,8 @@
             },
             {
               "id": "2026-W3-Q9",
-              "prompt": "A __________ in NFC emits a small electric current which creates a magnetic field that",
+              "prompt": "A __________ in NFC emits a small electric current which creates a magnetic field that in turn bridges the physical space between the devices.",
               "options": [
-                {
-                  "key": "a",
-                  "text": "__________ in NFC emits a small electric current which creates a magnetic field that in turn bridges the physical space between the devices."
-                },
                 {
                   "key": "a",
                   "text": "reader"
@@ -13403,12 +13351,8 @@
             },
             {
               "id": "2026-W11-Q9",
-              "prompt": "Match the Industrial Revolution with the corresponding milestone:",
+              "prompt": "Match the Industrial Revolution with the corresponding milestone: 1st 2) 2nd 3) 3rd 4) 4th",
               "options": [
-                {
-                  "key": "a",
-                  "text": "1st 2) 2nd 3) 3rd 4) 4th"
-                },
                 {
                   "key": "a",
                   "text": "1-Mechanized production, 2-Mass production, 3-Internet evolution & automation, 4-Industrial Internet of Things"

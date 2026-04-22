@@ -1,4 +1,10 @@
-import type { Question, QuizDataset, QuizSelection } from '../types/quiz'
+import type {
+  CustomWeekSelection,
+  CustomQuizOrder,
+  Question,
+  QuizDataset,
+  QuizSelection,
+} from '../types/quiz'
 
 export function flattenQuestions(dataset: QuizDataset): Question[] {
   return dataset.years.flatMap((year) =>
@@ -24,42 +30,61 @@ export function getPool(
   dataset: QuizDataset,
   selection: QuizSelection,
   bookmarks: string[],
+  customWeekSelection?: CustomWeekSelection,
+  useCustomWeekSelection = false,
+  customQuizOrder: CustomQuizOrder = 'serial',
 ): Question[] {
   let pool: Question[]
 
-  // Handle different shuffle modes
-  if (selection.shuffle === 'random15') {
-    // Get 15 random questions from entire dataset
-    const allQuestions = flattenQuestions(dataset)
-    pool = getRandomSubset(allQuestions, 15)
-  } else if (selection.shuffle === 'year') {
-    // Shuffle questions within selected year
-    pool = flattenQuestions(dataset)
-    if (selection.year) {
-      pool = pool.filter((q) => q.year === selection.year)
+  if (useCustomWeekSelection) {
+    const selectedPairs = new Set(
+      Object.entries(customWeekSelection ?? {}).flatMap(([year, weeks]) =>
+        weeks.map((week) => `${year}-${week}`),
+      ),
+    )
+
+    pool = flattenQuestions(dataset).filter((question) =>
+      selectedPairs.has(`${question.year}-${question.week}`),
+    )
+
+    if (customQuizOrder === 'shuffle') {
+      pool = shuffleArray(pool)
     }
-    pool = shuffleArray(pool)
-  } else if (selection.shuffle === 'week') {
-    // Shuffle questions within selected week
-    pool = flattenQuestions(dataset)
-    if (selection.year && selection.week) {
-      pool = pool.filter(
-        (q) => q.year === selection.year && q.week === selection.week,
-      )
-    }
-    pool = shuffleArray(pool)
   } else {
-    // No shuffle - original behavior
-    pool = flattenQuestions(dataset)
+    // Handle different shuffle modes
+    if (selection.shuffle === 'random15') {
+      // Get 15 random questions from entire dataset
+      const allQuestions = flattenQuestions(dataset)
+      pool = getRandomSubset(allQuestions, 15)
+    } else if (selection.shuffle === 'year') {
+      // Shuffle questions within selected year
+      pool = flattenQuestions(dataset)
+      if (selection.year) {
+        pool = pool.filter((q) => q.year === selection.year)
+      }
+      pool = shuffleArray(pool)
+    } else if (selection.shuffle === 'week') {
+      // Shuffle questions within selected week
+      pool = flattenQuestions(dataset)
+      if (selection.year && selection.week) {
+        pool = pool.filter(
+          (q) => q.year === selection.year && q.week === selection.week,
+        )
+      }
+      pool = shuffleArray(pool)
+    } else {
+      // No shuffle - original behavior
+      pool = flattenQuestions(dataset)
 
-    if (selection.scope === 'year' && selection.year) {
-      pool = pool.filter((q) => q.year === selection.year)
-    }
+      if (selection.scope === 'year' && selection.year) {
+        pool = pool.filter((q) => q.year === selection.year)
+      }
 
-    if (selection.scope === 'week' && selection.year && selection.week) {
-      pool = pool.filter(
-        (q) => q.year === selection.year && q.week === selection.week,
-      )
+      if (selection.scope === 'week' && selection.year && selection.week) {
+        pool = pool.filter(
+          (q) => q.year === selection.year && q.week === selection.week,
+        )
+      }
     }
   }
 

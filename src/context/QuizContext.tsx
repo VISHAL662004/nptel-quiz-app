@@ -9,6 +9,8 @@ import {
   useState,
 } from 'react'
 import type {
+  CustomWeekSelection,
+  CustomQuizOrder,
   Question,
   QuizDataset,
   QuizMode,
@@ -25,10 +27,14 @@ interface QuizContextValue {
   setSelection: (next: Partial<QuizSelection>) => void
   bookmarks: string[]
   toggleBookmark: (id: string) => void
+  customWeekSelection: CustomWeekSelection
+  setCustomWeekSelection: (next: CustomWeekSelection) => void
+  customQuizOrder: CustomQuizOrder
+  setCustomQuizOrder: (next: CustomQuizOrder) => void
   session: QuizSession
   currentQuestion: Question | null
   progress: number
-  startQuiz: (mode: QuizMode) => void
+  startQuiz: (mode: QuizMode, source?: 'default' | 'custom') => void
   answerQuestion: (questionId: string, option: string) => void
   setIndex: (index: number) => void
   nextQuestion: () => void
@@ -65,6 +71,9 @@ const defaultSession: QuizSession = {
   elapsedSeconds: 0,
 }
 
+const defaultCustomWeekSelection: CustomWeekSelection = {}
+const defaultCustomQuizOrder: CustomQuizOrder = 'serial'
+
 function loadStoredSession(): QuizSession {
   try {
     const raw = localStorage.getItem(QUIZ_STATE_KEY)
@@ -97,6 +106,12 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
   const [selection, setSelectionState] = useState<QuizSelection>(defaultSelection)
   const [session, setSession] = useState<QuizSession>(loadStoredSession)
   const [bookmarks, setBookmarks] = useState<string[]>(loadBookmarks)
+  const [customWeekSelection, setCustomWeekSelection] = useState<CustomWeekSelection>(
+    defaultCustomWeekSelection,
+  )
+  const [customQuizOrder, setCustomQuizOrder] = useState<CustomQuizOrder>(
+    defaultCustomQuizOrder,
+  )
 
   useEffect(() => {
     fetch('/data/quiz-data.json')
@@ -147,11 +162,18 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const startQuiz = useCallback(
-    (mode: QuizMode) => {
+    (mode: QuizMode, source: 'default' | 'custom' = 'default') => {
       if (!dataset) {
         return
       }
-      const pool = getPool(dataset, selection, bookmarks)
+      const pool = getPool(
+        dataset,
+        selection,
+        bookmarks,
+        customWeekSelection,
+        source === 'custom',
+        customQuizOrder,
+      )
       setSession({
         ...defaultSession,
         started: true,
@@ -160,7 +182,7 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
         startedAt: Date.now(),
       })
     },
-    [dataset, selection, bookmarks],
+    [dataset, selection, bookmarks, customWeekSelection, customQuizOrder],
   )
 
   const answerQuestion = useCallback(
@@ -237,6 +259,10 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
       setSelection,
       bookmarks,
       toggleBookmark,
+      customWeekSelection,
+      setCustomWeekSelection,
+      customQuizOrder,
+      setCustomQuizOrder,
       session,
       currentQuestion,
       progress,
@@ -257,6 +283,10 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
       setSelection,
       bookmarks,
       toggleBookmark,
+      customWeekSelection,
+      setCustomWeekSelection,
+      customQuizOrder,
+      setCustomQuizOrder,
       session,
       currentQuestion,
       progress,

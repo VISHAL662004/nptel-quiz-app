@@ -1,6 +1,8 @@
 export type QuizMode = 'standard' | 'rapid'
 export type ScopeType = 'year' | 'week' | 'full'
 export type ShuffleMode = 'none' | 'week' | 'year' | 'random15'
+export type CustomWeekSelection = Record<string, number[]>
+export type CustomQuizOrder = 'serial' | 'shuffle'
 
 export interface Option {
   key: string
