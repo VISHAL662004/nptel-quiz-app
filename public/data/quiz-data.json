@@ -5231,7 +5231,7 @@
             },
             {
               "id": "2025-W2-Q6",
-              "prompt": "State True or False. - topic in MQTT can only be numbers.",
+              "prompt": "State True or False. - A topic in MQTT can only be numbers.",
               "options": [
                 {
                   "key": "a",
@@ -5243,7 +5243,7 @@
                 }
               ],
               "correctAnswer": "b",
-              "correctText": "True",
+              "correctText": "false",
               "solution": "A topic in MQTT is a string.\nBook - Introduction to IoT, Authors – Sudip Misra, Anandarup Mukherjee, and Arijit Roy,\nPublisher – Cambridge University Press, Edition – 1 (2021)\n\n-- 11 of 102 --\n\nNPTEL Online Certification Courses\nIndian Institute of Technology Kharagpur",
               "year": "2025",
               "week": 2
