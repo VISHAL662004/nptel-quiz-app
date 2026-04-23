@@ -5010,8 +5010,8 @@
                   "text": "None of these"
                 }
               ],
-              "correctAnswer": "d",
-              "correctText": "None of these",
+              "correctAnswer": "c",
+              "correctText": "Both (a) and (b)",
               "solution": "We classify sensors based on -\na. Output\nb. Data type\nSee lecture 3 (Sensing) @ 13:30",
               "year": "2025",
               "week": 1
@@ -5235,11 +5235,11 @@
               "options": [
                 {
                   "key": "a",
-                  "text": "False"
+                  "text": "True"
                 },
                 {
                   "key": "b",
-                  "text": "True"
+                  "text": "False"
                 }
               ],
               "correctAnswer": "b",
@@ -12324,11 +12324,7 @@
                 },
                 {
                   "key": "b",
-                  "text": "PaaS provides a development environment for clients to build apps, while IaaS offers"
-                },
-                {
-                  "key": "c",
-                  "text": "ontrol over OS and infrastructure"
+                  "text": "PaaS provides a development environment for clients to build apps, while IaaS offers control over OS and infrastructure"
                 },
                 {
                   "key": "c",
