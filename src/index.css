@@ -357,6 +357,24 @@ input {
   border: 1px solid rgba(0, 212, 183, 0.35);
 }
 
+.auto-next-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 10px;
+  border: 1px solid rgba(137, 187, 255, 0.25);
+  background: rgba(9, 16, 31, 0.85);
+  cursor: pointer;
+}
+
+.auto-next-toggle input {
+  margin: 0;
+  accent-color: var(--accent);
+}
+
 .quiz-panel h3 {
   margin-bottom: 0.9rem;
   font-size: clamp(1rem, 2vw, 1.25rem);
